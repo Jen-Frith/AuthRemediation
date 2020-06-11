@@ -85,7 +85,10 @@
                 </div>
 
                 <div class="links">
+                    @auth
+                        
                     <a href="{{route('viewUser')}}">View all the user</a>
+                    @endauth
                    
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>

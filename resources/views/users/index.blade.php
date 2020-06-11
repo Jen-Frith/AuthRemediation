@@ -39,7 +39,18 @@
  <td>{{$user->name}}</td>
  <td>{{$user->email}}</td>
       <td>
-        <a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>
+
+        @if (Auth::id()==$user->id)
+        <a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>       
+            
+        @endif
+  
+       
+        
+        
+
+       
+       
         <form action="{{route('user.destroy' , $user->id)}}" method="post">
           @csrf
           @method('delete')
