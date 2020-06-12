@@ -7,6 +7,7 @@ use Image;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
+
 {
 
 
@@ -16,6 +17,11 @@ public function index(){
 return view('users/index', compact('users'));
 
 }
+
+
+
+
+
 
 public function create(){
 
@@ -35,11 +41,6 @@ public function destroy(){
 }
 
 
-public function profile(){
-
-return view ('profile', array('user'=>Auth::user()));
-
-}
 
 
 
