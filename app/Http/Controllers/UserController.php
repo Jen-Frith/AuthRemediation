@@ -16,6 +16,14 @@ public function index(){
 
 return view('users/index', compact('users'));
 
+
+if (\Gate::allows('isAdmin')) {
+    echo 'Admin user role is allowed';
+} else {
+    echo 'Admin are not allowed not allowed';
+}
+
+
 }
 
 
@@ -30,8 +38,8 @@ public function create(){
 
 
 public function edit(){
-
-    dd('edit');
+dd('edit');
+   
 }
 
 

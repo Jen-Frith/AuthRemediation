@@ -40,10 +40,24 @@
  <td>{{$user->email}}</td>
       <td>
 
-        @if (Auth::id()==$user->id)
+
+      
+        
+        @can('isAdmin')
+        {{-- @if (Auth::id()==$user->id) --}}
         <a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>       
+        
+        <form action="{{route('user.destroy' , $user->id)}}" method="post">
+          @csrf
+          @method('delete')
+          <button class='btn btn-danger my-3'>Delete</button>
+        </form>
+        @else
+        <h2>Not allowed to set profil</h2>
+       
+        @endcan
             
-        @endif
+        {{-- @endif --}}
   
        
         
@@ -51,11 +65,7 @@
 
        
        
-        <form action="{{route('user.destroy' , $user->id)}}" method="post">
-          @csrf
-          @method('delete')
-          <button class='btn btn-danger my-3'>Delete</button>
-        </form>
+        
       </td>
       </tr>
       @endforeach
