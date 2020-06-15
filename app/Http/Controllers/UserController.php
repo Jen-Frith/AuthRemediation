@@ -12,9 +12,18 @@ class UserController extends Controller
 
 
 public function index(){
+
+    $randomUsers = User::orderByRaw('RAND()')->take(5)->get();
+
+
+
+
+
+
+
  $users=User::all()   ;
 
-return view('users/index', compact('users'));
+return view('users/index', compact('users', 'randomUsers'));
 
 
 if (\Gate::allows('isAdmin')) {
@@ -22,6 +31,10 @@ if (\Gate::allows('isAdmin')) {
 } else {
     echo 'Admin are not allowed not allowed';
 }
+
+
+
+
 
 
 }
@@ -38,14 +51,17 @@ public function create(){
 
 
 public function edit(){
-dd('edit');
+    $this->authorize('edit', $user);
    
 }
 
 
 public function destroy(){
 
-    dd('delete');
+   
+      $this->authorize('destroy', $user);
+      // The current user can delete the post
+   
 }
 
 

@@ -34,6 +34,10 @@ Route::resource('/message', 'MessageController');
 Route::get('/listUser', 'UserController@index')->name('viewUser');
 
 
+
+
+
+
 Route::get('/users/create', 'UserController@create')->name('user.create');
 Route::get('/users/edit', 'UserController@edit')->name('user.edit');
 Route::get('/users/destroy', 'UserController@destroy')->name('user.destroy');
