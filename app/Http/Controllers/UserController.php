@@ -14,16 +14,17 @@ class UserController extends Controller
 public function index(){
 
     $randomUsers = User::orderByRaw('RAND()')->take(5)->get();
+    
+    
+    
+    
+    
+    
+    
+    $users=User::all()   ;
+    $lastUsers = $users->sortBy('key')->take(-3);
 
-
-
-
-
-
-
- $users=User::all()   ;
-
-return view('users/index', compact('users', 'randomUsers'));
+return view('users/index', compact('users', 'randomUsers', 'lastUsers'));
 
 
 if (\Gate::allows('isAdmin')) {
