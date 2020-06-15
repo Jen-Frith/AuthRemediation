@@ -12,6 +12,15 @@
   </div>
   
 </div>
+
+<form action="{{route('user.search')}}" method="get" >
+  <input type="text" class="form-control" name="search" placeholder="Search...">
+  <span class="input-group-btn">
+
+</span>
+</form>
+
+
 <div class="d-flex justify-content-start">
   <a href="{{route('user.create')}}" class='btn btn-primary '>Ajouter</a>
   

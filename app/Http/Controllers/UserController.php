@@ -67,7 +67,19 @@ public function destroy(){
 
 
 
+public function search(){
 
+    $search=request()->input('search');
+   
+    
+   $results= User::where('name', 'like', "%$search%")
+    ->orWhere('email', 'like', "%$search%")
+    ->paginate(5);
+// dd($results);
+// $results= DB::table('portfolios')->select('title')->where('title', 'like', "%$search%")
+
+return view('users.search', compact('search', 'results'))->with('users', $results, $search);
+}
 
 
 }

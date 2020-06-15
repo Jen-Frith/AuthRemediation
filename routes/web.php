@@ -63,3 +63,9 @@ Route::get('/messages', function(){
 
     return view('messages', compact('messages'));
 })->name('messages');
+
+
+Route::get('/search', 'UserController@search', function(){
+    $users=User::all(); 
+    return view('/user.search', compact('users'));
+})->name('user.search');
