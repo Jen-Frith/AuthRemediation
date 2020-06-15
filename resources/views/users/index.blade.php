@@ -117,6 +117,7 @@
 
 
 <section>
+
   <h1>Utilisateurs 3 derniers</h1>
   
   <table class="table container">
@@ -156,6 +157,48 @@
   
   </section>
   
+
+
+  <section>
+    <h1>Utilisateurs avec -de6 caractères </h1>
+    
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">Date de crétion</th>
+        <th scope="col">Name</th>
+        <th scope="col">Function</th>
+    
+          <th scope="col">Settings</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($filtered as $user)
+        <tr>
+        <td>{{$user->created_at}}</td>
+    <td>  
+      {{$user->name}}</td>
+    <td>{{$user->email}}</td>
+        <td>
+     
+          
+    
+         
+         
+          <form action="{{route('user.destroy' , $user->id)}}" method="post">
+            @csrf
+            @method('delete')
+            <button class='btn btn-danger my-3'>Delete</button>
+          </form>
+        </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    
+    
+    </section>
 {{-- @can('isAdmin')
 @if (Auth::id()==$user->id)
 <a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>       

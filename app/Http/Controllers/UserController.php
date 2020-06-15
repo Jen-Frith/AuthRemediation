@@ -6,25 +6,25 @@ use Auth;
 use Image;
 use App\User;
 use Illuminate\Support\Facades\Storage;
-class UserController extends Controller
+use Illuminate\Support\Facades\DB;
 
+
+class UserController extends Controller
 {
 
 
 public function index(){
 
     $randomUsers = User::orderByRaw('RAND()')->take(5)->get();
+    $filtered = DB::table('users')->whereRaw('length(name) < 6')->get();
     
-    
-    
-    
-    
-    
+    // dd($filtered);
     
     $users=User::all()   ;
     $lastUsers = $users->sortBy('key')->take(-3);
-
-return view('users/index', compact('users', 'randomUsers', 'lastUsers'));
+   
+    
+return view('users/index', compact('users', 'randomUsers', 'lastUsers', 'filtered'));
 
 
 if (\Gate::allows('isAdmin')) {
