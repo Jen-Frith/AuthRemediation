@@ -15,11 +15,8 @@
   <a href="{{route('user.create')}}" class='btn btn-primary '>Ajouter</a>
   
 </div>
-@if (session('alert'))
-    <div class="alert alert-success">
-        {{ session('alert') }}
+<div class="alert alert-success"><h2>Resultats {{count($results)}}</h2>
     </div>
-@endif
 <table class="table container">
     <thead>
       <tr>
@@ -52,7 +49,6 @@
     
 @endif 
   
-       
         
         
 

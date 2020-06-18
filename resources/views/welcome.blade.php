@@ -88,10 +88,10 @@
                     @auth
                         
                     <a href="{{route('viewUser')}}">View all the user</a>
-                    @endauth
-                   
+                    
                     <a href="{{route('message.index')}}">Contact</a>
                     <a href="{{route('messages')}}">View all your messages</a>
+                    @endauth
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>

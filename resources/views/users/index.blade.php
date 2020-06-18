@@ -52,27 +52,25 @@
 
       
         
-@can('isAdmin')
-@if (Auth::id()==$user->id)
-<a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>       
-@else
-<h2>Not allowed to set profil</h2>
 
-@endcan
-    
-@endif 
+{{-- @if (Auth::id()==$user->id) --}}
+@can('mineOrAdmin',$user,App\User::class)
+<div class="d-flex">
+
+  <a href="{{route('user.edit' , $user->id)}}" class='btn btn-warning text-white'>Edit</a>       
+  {{-- <h2>Not allowed to set profil</h2> --}}
+         
+         
+          <form action="{{route('user.destroy' , $user->id)}}" method="post" class="h-100">
+            @csrf
+            @method('delete')
+            <button class='btn btn-danger '>Delete</button>
+          </form>
+</div>
   
-       
-        
-        
+@endcan
 
-       
-       
-        <form action="{{route('user.destroy' , $user->id)}}" method="post">
-          @csrf
-          @method('delete')
-          <button class='btn btn-danger my-3'>Delete</button>
-        </form>
+
       </td>
       </tr>
       @endforeach
